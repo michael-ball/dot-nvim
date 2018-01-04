@@ -22,8 +22,8 @@ call plug#end()
 
 " General configuration
 
-let g:python_host_prog = '~/.pyenv/versions/neovim2/bin/python'
-let g:python3_host_prog = '~/.pyenv/versions/neovim3/bin/python'
+let g:loaded_python_provider = 1
+let g:python3_host_prog = $HOME . '/.pyenv/versions/neovim3/bin/python'
 
 set rnu
 set number
