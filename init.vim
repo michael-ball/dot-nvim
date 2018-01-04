@@ -15,7 +15,6 @@ Plug 'ryanoasis/vim-devicons'
 Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
 Plug 'nathanaelkane/vim-indent-guides'
-Plug 'techlivezheng/vim-plugin-minibufexpl'
 Plug 'benmills/vimux'
 
 call plug#end()
@@ -74,10 +73,6 @@ let g:airline#extensions#whitespace#enabled = 0
 call airline#parts#define_raw('linenr', '%l')
 call airline#parts#define_accent('linenr', 'bold')
 let g:airline_section_z = airline#section#create(['%3p%%  ', g:airline_symbols.linenr .' ', 'linenr', ':%c '])
-
-" Minibufexplorer configuration
-
-let g:miniBufExplorerAutoStart = 0
 
 " Gitgutter configuration
 
