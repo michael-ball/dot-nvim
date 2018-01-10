@@ -2,6 +2,7 @@ call plug#begin('~/.local/share/nvim/plugged')
 
 Plug 'chriskempson/base16-vim'
 Plug 'ctrlpvim/ctrlp.vim'
+Plug 'Shougo/denite.nvim'
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'autozimu/LanguageClient-neovim', {'branch': 'next', 'do': 'make release'}
 Plug 'scrooloose/nerdcommenter'
@@ -126,3 +127,8 @@ map <Leader>vx :VimuxInterruptRunner<CR>
 " Zoom the runner pane (use <bind-key> z to restore runner pane)
 map <Leader>vz :call VimuxZoomRunner()<CR>
 
+" Denite settings
+
+nnoremap <silent> fr :Denite references<CR>
+nnoremap <silent> o :Denite documentSymbol<CR>
+nnoremap <silent> po :Denite workspaceSymbol<CR>
