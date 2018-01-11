@@ -1,8 +1,7 @@
 call plug#begin('~/.local/share/nvim/plugged')
 
 Plug 'chriskempson/base16-vim'
-Plug 'ctrlpvim/ctrlp.vim'
-Plug 'Shougo/denite.nvim'
+Plug 'Shougo/denite.nvim', {'do': ':UpdateRemotePlugins' }
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'autozimu/LanguageClient-neovim', {'branch': 'next', 'do': 'make release'}
 Plug 'scrooloose/nerdcommenter'
@@ -10,6 +9,7 @@ Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
 Plug 'scrooloose/nerdtree-git-plugin', { 'on': 'NERDTreeToggle' }
 Plug 'ervandew/supertab'
 Plug 'wellle/tmux-complete.vim'
+Plug 'mbbill/undotree'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'ryanoasis/vim-devicons'
@@ -129,6 +129,11 @@ map <Leader>vz :call VimuxZoomRunner()<CR>
 
 " Denite settings
 
+nnoremap <silent> <F3> :Denite buffer<CR>
+nnoremap <silent> <F4> :Denite file_rec<CR>
 nnoremap <silent> fr :Denite references<CR>
 nnoremap <silent> o :Denite documentSymbol<CR>
 nnoremap <silent> po :Denite workspaceSymbol<CR>
+
+" Undotree configuration
+nnoremap <F5> :UndotreeToggle<cr>
