@@ -102,7 +102,7 @@ noremap <F8> :NERDTreeToggle<CR>
 set hidden
 
 let g:LanguageClient_serverCommands = {
-    \ 'rust': ['rustup', 'run', 'nightly', 'rls'],
+    \ 'rust': ['rustup', 'run', 'stable', 'rls'],
     \ 'javascript': ['javascript-typescript-stdio'],
     \ 'go': ['go-langserver'],
     \ 'python': ['pyls']
