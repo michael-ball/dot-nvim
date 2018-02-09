@@ -105,7 +105,8 @@ let g:LanguageClient_serverCommands = {
     \ 'rust': ['rustup', 'run', 'stable', 'rls'],
     \ 'javascript': ['javascript-typescript-stdio'],
     \ 'go': ['go-langserver'],
-    \ 'python': ['pyls']
+    \ 'python': ['pyls'],
+    \ 'vue': ['vls']
     \ }
 
 nnoremap <silent> K :call LanguageClient_textDocument_hover()<CR>
@@ -113,6 +114,9 @@ nnoremap <silent> gd :call LanguageClient_textDocument_definition()<CR>
 nnoremap <silent> <F2> :call LanguageClient_textDocument_rename()<CR>
 
 " Vimux configuration
+
+let g:VimuxUseNearest = 0
+let g:VimuxResetSequence = ""
 
 " Prompt for a command to run
 map <Leader>vp :VimuxPromptCommand<CR>
