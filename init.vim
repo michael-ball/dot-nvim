@@ -17,6 +17,7 @@ Plug 'mbbill/undotree'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'ryanoasis/vim-devicons'
+Plug 'elixir-editors/vim-elixir'
 Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
 Plug 'fatih/vim-go'
@@ -112,7 +113,8 @@ let g:LanguageClient_serverCommands = {
     \ 'rust': ['rustup', 'run', 'stable', 'rls'],
     \ 'javascript': ['javascript-typescript-stdio'],
     \ 'python': ['pyls'],
-    \ 'vue': ['vls']
+    \ 'vue': ['vls'],
+    \ 'elixir': ['language_server.sh']
     \ }
 
 nnoremap <silent> K :call LanguageClient_textDocument_hover()<CR>
