@@ -1,12 +1,13 @@
 call plug#begin('~/.local/share/nvim/plugged')
 
+Plug 'w0rp/ale'
 Plug 'chriskempson/base16-vim'
 Plug 'Shougo/denite.nvim', {'do': ':UpdateRemotePlugins' }
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'zchee/deoplete-go'
 Plug 'godoctor/godoctor.vim'
 Plug 'Yggdroot/indentLine'
-Plug 'autozimu/LanguageClient-neovim', {'branch': 'next', 'do': 'bash install.sh'}
+"Plug 'autozimu/LanguageClient-neovim', {'branch': 'next', 'do': 'bash install.sh'}
 Plug 'Shougo/neco-syntax'
 Plug 'scrooloose/nerdcommenter'
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
@@ -22,6 +23,7 @@ Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
 Plug 'fatih/vim-go'
 Plug 'jodosha/vim-godebug'
+Plug 'natebosch/vim-lsc'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'benmills/vimux'
 
@@ -109,17 +111,36 @@ noremap <F8> :NERDTreeToggle<CR>
 " LanguageClient configuration
 set hidden
 
-let g:LanguageClient_serverCommands = {
-    \ 'rust': ['rustup', 'run', 'stable', 'rls'],
-    \ 'javascript': ['javascript-typescript-stdio'],
-    \ 'python': ['pyls'],
-    \ 'vue': ['vls'],
-    \ 'elixir': ['language_server.sh']
+"let g:LanguageClient_serverCommands = {
+    "\ 'rust': ['rls'],
+    "\ 'javascript': ['javascript-typescript-stdio'],
+    "\ 'python': ['pyls'],
+    "\ 'vue': ['vls'],
+    "\ 'elixir': ['language_server.sh']
+    "\ }
+
+"nnoremap <silent> K :call LanguageClient_textDocument_hover()<CR>
+"nnoremap <silent> gd :call LanguageClient_textDocument_definition()<CR>
+"nnoremap <silent> <F2> :call LanguageClient_textDocument_rename()<CR>
+
+" vim-lsc configuration
+let g:lsc_server_commands = {'rust': 'rls',
+    \ 'javascript': 'javascript-typescript-stdio',
+    \ 'python': 'pyls',
+    \ 'vue': 'vls',
+    \ 'elixir': 'language_server.sh'
     \ }
 
-nnoremap <silent> K :call LanguageClient_textDocument_hover()<CR>
-nnoremap <silent> gd :call LanguageClient_textDocument_definition()<CR>
-nnoremap <silent> <F2> :call LanguageClient_textDocument_rename()<CR>
+let g:lsc_auto_map = v:true " Use defaults
+noremap <F2> :LSClientRename<CR>
+
+" Ale configuration 
+let g:ale_completion_enabled = 0  " disable completion
+let g:ale_set_highlights = 0
+let g:airline#extensions#ale#enabled = 1
+nmap <silent> <C-k> <Plug>(ale_previous_wrap)
+nmap <silent> <C-j> <Plug>(ale_next_wrap)
+
 
 " Vimux configuration
 
@@ -143,9 +164,9 @@ map <Leader>vz :call VimuxZoomRunner()<CR>
 
 nnoremap <silent> <F3> :Denite buffer<CR>
 nnoremap <silent> <F4> :Denite file_rec<CR>
-nnoremap <silent> fr :Denite references<CR>
-nnoremap <silent> o :Denite documentSymbol<CR>
-nnoremap <silent> po :Denite workspaceSymbol<CR>
+"nnoremap <silent> fr :Denite references<CR>
+"nnoremap <silent> o :Denite documentSymbol<CR>
+"nnoremap <silent> po :Denite workspaceSymbol<CR>
 
 " Undotree configuration
 nnoremap <F5> :UndotreeToggle<cr>
