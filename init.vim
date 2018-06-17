@@ -67,7 +67,7 @@ if !has('gui-running')
     let base16colorspace=256
 endif
 set background=dark
-colors base16-default-dark
+colors base16-classic-dark
 
 " Airline configuration
 let g:airline_theme = 'base16'
