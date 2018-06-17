@@ -1,1 +1,1 @@
-GuiFont Iosevka Term:h9
+GuiFont Iosevka Term:h8
