@@ -24,7 +24,6 @@ Plug 'airblade/vim-gitgutter'
 Plug 'fatih/vim-go', { 'for': 'go' }
 Plug 'jodosha/vim-godebug', { 'for': 'go' }
 Plug 'natebosch/vim-lsc'
-Plug 'terryma/vim-multiple-cursors'
 Plug 'benmills/vimux'
 
 call plug#end()
@@ -174,16 +173,6 @@ au FileType go nmap <silent> fr :GoReferrers<CR>
 " insert mode
 autocmd CursorMovedI * if pumvisible() == 0|pclose|endif
 autocmd InsertLeave * if pumvisible() == 0|pclose|endif
-
-" vim-multiple-cursor settings
-" Disable deoplete when in multi cursor mode
-function! Multiple_cursors_before()
-    let b:deoplete_disable_auto_complete = 1
-endfunction
-
-function! Multiple_cursors_after()
-    let b:deoplete_disable_auto_complete = 0
-endfunction
 
 au TermOpen * setlocal nonumber norelativenumber
 tnoremap <Esc> <C-\><C-n>
