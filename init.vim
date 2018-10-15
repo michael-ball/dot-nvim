@@ -2,12 +2,12 @@ call plug#begin('~/.local/share/nvim/plugged')
 
 Plug 'w0rp/ale'
 Plug 'chriskempson/base16-vim'
-Plug 'Shougo/denite.nvim', {'do': ':UpdateRemotePlugins' }
+Plug 'luisjure/csound-vim', { 'for': 'csound' }
+Plug 'Shougo/denite.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-Plug 'zchee/deoplete-go'
-Plug 'godoctor/godoctor.vim'
+Plug 'zchee/deoplete-go', { 'for': 'go' }
+Plug 'godoctor/godoctor.vim', { 'for': 'go' }
 Plug 'Yggdroot/indentLine'
-"Plug 'autozimu/LanguageClient-neovim', {'branch': 'next', 'do': 'bash install.sh'}
 Plug 'Shougo/neco-syntax'
 Plug 'scrooloose/nerdcommenter'
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
@@ -18,11 +18,11 @@ Plug 'mbbill/undotree'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'ryanoasis/vim-devicons'
-Plug 'elixir-editors/vim-elixir'
+Plug 'elixir-editors/vim-elixir', { 'for': 'elixir' }
 Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
-Plug 'fatih/vim-go'
-Plug 'jodosha/vim-godebug'
+Plug 'fatih/vim-go', { 'for': 'go' }
+Plug 'jodosha/vim-godebug', { 'for': 'go' }
 Plug 'natebosch/vim-lsc'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'benmills/vimux'
@@ -52,7 +52,7 @@ if has('autocmd')
     autocmd FileType javascript set tabstop=2 shiftwidth=2 softtabstop=2 et
 
     " only show ruler for python
-    autocmd FileType python match ErrorMsg '\%>79v.\+'
+    autocmd FileType * if &filetype == 'python' | match ErrorMsg '\%>79v.\+' | else | match ErrorMsg '' | endif
 endif
 
 set et
@@ -93,42 +93,20 @@ let g:gitgutter_sign_removed = '█'
 let g:gitgutter_sign_modified_removed = '█'
 let g:gitgutter_diff_args = '-w --ignore-blank-lines'
 
-" Indent guides configuration
-"let g:indent_guides_start_level = 2
-"let g:indent_guides_guide_size = 1
-""let g:indent_guides_exclude_filetypes = ['help', 'nerdtree', '__Tagbar__']
-""let g:indent_guides_enable_on_vim_startup = 1
-"let g:indent_guides_auto_colors = 0
-"hi IndentGuidesOdd  ctermbg=234
-"hi IndentGuidesEven ctermbg=235
-
 " NERDTree configuration
 let g:NERDTreeDirArrowExpandable = '▸'
 let g:NERDTreeDirArrowCollapsible = '▾'
 
 noremap <F8> :NERDTreeToggle<CR>
 
-" LanguageClient configuration
-set hidden
-
-"let g:LanguageClient_serverCommands = {
-    "\ 'rust': ['rls'],
-    "\ 'javascript': ['javascript-typescript-stdio'],
-    "\ 'python': ['pyls'],
-    "\ 'vue': ['vls'],
-    "\ 'elixir': ['language_server.sh']
-    "\ }
-
-"nnoremap <silent> K :call LanguageClient_textDocument_hover()<CR>
-"nnoremap <silent> gd :call LanguageClient_textDocument_definition()<CR>
-"nnoremap <silent> <F2> :call LanguageClient_textDocument_rename()<CR>
-
 " vim-lsc configuration
 let g:lsc_server_commands = {'rust': 'rls',
     \ 'javascript': 'javascript-typescript-stdio',
     \ 'python': 'pyls',
     \ 'vue': 'vls',
-    \ 'elixir': 'language_server.sh'
+    \ 'elixir': 'language_server.sh',
+    \ 'c': 'ccls',
+    \ 'cpp': 'ccls'
     \ }
 
 let g:lsc_auto_map = v:true " Use defaults
@@ -140,7 +118,6 @@ let g:ale_set_highlights = 0
 let g:airline#extensions#ale#enabled = 1
 nmap <silent> <C-k> <Plug>(ale_previous_wrap)
 nmap <silent> <C-j> <Plug>(ale_next_wrap)
-
 
 " Vimux configuration
 
@@ -164,9 +141,6 @@ map <Leader>vz :call VimuxZoomRunner()<CR>
 
 nnoremap <silent> <F3> :Denite buffer<CR>
 nnoremap <silent> <F4> :Denite file_rec<CR>
-"nnoremap <silent> fr :Denite references<CR>
-"nnoremap <silent> o :Denite documentSymbol<CR>
-"nnoremap <silent> po :Denite workspaceSymbol<CR>
 
 " Undotree configuration
 nnoremap <F5> :UndotreeToggle<cr>
@@ -210,3 +184,6 @@ endfunction
 function! Multiple_cursors_after()
     let b:deoplete_disable_auto_complete = 0
 endfunction
+
+au TermOpen * setlocal nonumber norelativenumber
+tnoremap <Esc> <C-\><C-n>
