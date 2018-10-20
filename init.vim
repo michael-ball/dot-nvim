@@ -24,6 +24,7 @@ Plug 'airblade/vim-gitgutter'
 Plug 'fatih/vim-go', { 'for': 'go' }
 Plug 'jodosha/vim-godebug', { 'for': 'go' }
 Plug 'natebosch/vim-lsc'
+Plug 'junegunn/vim-plug'
 Plug 'benmills/vimux'
 
 call plug#end()
