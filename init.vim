@@ -15,8 +15,7 @@ Plug 'scrooloose/nerdtree-git-plugin', { 'on': 'NERDTreeToggle' }
 Plug 'ervandew/supertab'
 Plug 'wellle/tmux-complete.vim'
 Plug 'mbbill/undotree'
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
+Plug 'vim-airline/vim-airline' | Plug 'vim-airline/vim-airline-themes'
 Plug 'ryanoasis/vim-devicons'
 Plug 'elixir-editors/vim-elixir', { 'for': 'elixir' }
 Plug 'tpope/vim-fugitive'
