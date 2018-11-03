@@ -22,6 +22,7 @@ Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
 Plug 'fatih/vim-go', { 'for': 'go' }
 Plug 'jodosha/vim-godebug', { 'for': 'go' }
+Plug 'Glench/Vim-Jinja2-Syntax'
 Plug 'natebosch/vim-lsc'
 Plug 'junegunn/vim-plug'
 Plug 'benmills/vimux'
