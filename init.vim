@@ -176,4 +176,5 @@ autocmd CursorMovedI * if pumvisible() == 0|pclose|endif
 autocmd InsertLeave * if pumvisible() == 0|pclose|endif
 
 au TermOpen * setlocal nonumber norelativenumber
+au TermOpen * match ErrorMsg ''
 tnoremap <Esc> <C-\><C-n>
