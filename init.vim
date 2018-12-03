@@ -102,7 +102,7 @@ noremap <F8> :NERDTreeToggle<CR>
 " vim-lsc configuration
 let g:lsc_server_commands = {'rust': 'rls',
     \ 'javascript': 'javascript-typescript-stdio',
-    \ 'python': 'pyls',
+    \ 'python': 'pyenv exec pyls',
     \ 'vue': 'vls',
     \ 'elixir': 'language_server.sh',
     \ 'c': 'ccls',
