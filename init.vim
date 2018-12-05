@@ -66,7 +66,8 @@ let g:deoplete#enable_at_startup = 1
 " Look/feel configuration 
 
 if !has('gui-running')
-    let base16colorspace=256
+    "let base16colorspace=256
+    set termguicolors
 endif
 set background=dark
 colors base16-classic-dark
@@ -102,7 +103,7 @@ noremap <F8> :NERDTreeToggle<CR>
 " vim-lsc configuration
 let g:lsc_server_commands = {'rust': 'rls',
     \ 'javascript': 'javascript-typescript-stdio',
-    \ 'python': 'pyenv exec pyls',
+    \ 'python': 'pyenv exec pyls --check-parent-process',
     \ 'vue': 'vls',
     \ 'elixir': 'language_server.sh',
     \ 'c': 'ccls',
@@ -116,7 +117,7 @@ noremap <F2> :LSClientRename<CR>
 let g:ale_completion_enabled = 0  " disable completion
 let g:ale_set_highlights = 0
 let g:airline#extensions#ale#enabled = 1
-let g:ale_set_balloons = 1
+let g:ale_virtualtext_cursor = 1
 if !has('gui-running')
     set mouse=a
 endif
