@@ -116,6 +116,14 @@ noremap <F2> :LSClientRename<CR>
 let g:ale_completion_enabled = 0  " disable completion
 let g:ale_set_highlights = 0
 let g:airline#extensions#ale#enabled = 1
+let g:ale_set_balloons = 1
+if !has('gui-running')
+    set mouse=a
+endif
+
+let g:ale_fixers = {
+            \ 'python': ['yapf'],
+\}
 nmap <silent> <C-k> <Plug>(ale_previous_wrap)
 nmap <silent> <C-j> <Plug>(ale_next_wrap)
 
