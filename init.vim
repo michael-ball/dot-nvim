@@ -101,14 +101,15 @@ let g:NERDTreeDirArrowCollapsible = '▾'
 noremap <F8> :NERDTreeToggle<CR>
 
 " vim-lsc configuration
-let g:lsc_server_commands = {'rust': 'rls',
-    \ 'javascript': 'javascript-typescript-stdio',
-    \ 'python': 'pyenv exec pyls --check-parent-process',
-    \ 'vue': 'vls',
-    \ 'elixir': 'language_server.sh',
-    \ 'c': 'ccls',
-    \ 'cpp': 'ccls'
-    \ }
+let g:lsc_server_commands = {
+            \ 'rust': 'rls',
+            \ 'javascript': 'javascript-typescript-stdio',
+            \ 'python': 'pyenv exec pyls --check-parent-process',
+            \ 'vue': 'vls',
+            \ 'elixir': 'language_server.sh',
+            \ 'c': 'ccls',
+            \ 'cpp': 'ccls'
+            \ }
 
 let g:lsc_auto_map = v:true " Use defaults
 noremap <F2> :LSClientRename<CR>
@@ -124,6 +125,7 @@ endif
 
 let g:ale_fixers = {
             \ 'python': ['yapf'],
+            \ 'rust': ['rustfmt'],
 \}
 nmap <silent> <C-k> <Plug>(ale_previous_wrap)
 nmap <silent> <C-j> <Plug>(ale_next_wrap)
