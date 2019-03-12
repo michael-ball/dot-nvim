@@ -76,7 +76,7 @@ if !has('gui-running')
     set termguicolors
 endif
 set background=dark
-colors base16-classic-dark
+colors base16-synth-midnight-dark
 
 " Airline configuration
 let g:airline_theme = 'base16'
@@ -91,6 +91,7 @@ let g:airline#extensions#whitespace#enabled = 0
 call airline#parts#define_raw('linenr', '%l')
 call airline#parts#define_accent('linenr', 'bold')
 let g:airline_section_z = airline#section#create(['%3p%%  ', g:airline_symbols.linenr .' ', 'linenr', ':%c '])
+let g:airline#extensions#tmuxline#enabled = 0
 
 " Gitgutter configuration
 
