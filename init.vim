@@ -13,6 +13,7 @@ Plug 'scrooloose/nerdcommenter'
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
 Plug 'scrooloose/nerdtree-git-plugin', { 'on': 'NERDTreeToggle' }
 Plug 'ervandew/supertab'
+Plug 'godlygeek/tabular'
 Plug 'wellle/tmux-complete.vim'
 Plug 'mbbill/undotree'
 Plug 'vim-airline/vim-airline' | Plug 'vim-airline/vim-airline-themes'
@@ -24,6 +25,8 @@ Plug 'fatih/vim-go', { 'for': 'go' }
 Plug 'jodosha/vim-godebug', { 'for': 'go' }
 Plug 'Glench/Vim-Jinja2-Syntax'
 Plug 'natebosch/vim-lsc'
+Plug 'plasticboy/vim-markdown'
+Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }}
 Plug 'junegunn/vim-plug'
 Plug 'benmills/vimux'
 
@@ -53,6 +56,8 @@ if has('autocmd')
 
     " only show ruler for python
     autocmd FileType * if &filetype == 'python' | match ErrorMsg '\%>79v.\+' | else | match ErrorMsg '' | endif
+    " wrap Markdown, don't wrap anything else
+    autocmd FileType * if &filetype == 'markdown' | set wrap | else | set nowrap | endif
 endif
 
 set et
@@ -189,3 +194,6 @@ autocmd InsertLeave * if pumvisible() == 0|pclose|endif
 au TermOpen * setlocal nonumber norelativenumber
 au TermOpen * match ErrorMsg ''
 tnoremap <Esc> <C-\><C-n>
+
+"Vim markdown
+let g:vim_markdown_folding_disabled = 1
