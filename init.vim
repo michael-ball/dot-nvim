@@ -46,6 +46,7 @@ set backspace=indent,eol,start
 filetype on
 filetype plugin on
 filetype plugin indent on
+set clipboard+=unnamedplus
 
 if has('autocmd')
     " set different indent rules
