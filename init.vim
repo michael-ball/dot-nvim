@@ -7,6 +7,7 @@ Plug 'Shougo/denite.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'zchee/deoplete-go', { 'for': 'go' }
 Plug 'godoctor/godoctor.vim', { 'for': 'go' }
+Plug 'junegunn/goyo.vim' | Plug 'junegunn/limelight.vim'
 Plug 'Yggdroot/indentLine'
 Plug 'Shougo/neco-syntax'
 Plug 'scrooloose/nerdcommenter'
@@ -197,5 +198,30 @@ au TermOpen * setlocal nonumber norelativenumber
 au TermOpen * match ErrorMsg ''
 tnoremap <Esc> <C-\><C-n>
 
-"Vim markdown
+" Vim markdown
 let g:vim_markdown_folding_disabled = 1
+
+" Goyo (distraction-free mode)
+function! s:goyo_enter()
+  silent !tmux set status off
+  silent !tmux list-panes -F '\#F' | grep -q Z || tmux resize-pane -Z
+  set noshowmode
+  set noshowcmd
+  set scrolloff=999
+  Limelight
+endfunction
+
+function! s:goyo_leave()
+  silent !tmux set status on
+  silent !tmux list-panes -F '\#F' | grep -q Z && tmux resize-pane -Z
+  set showmode
+  set showcmd
+  set scrolloff=5
+  Limelight!
+endfunction
+
+autocmd! User GoyoEnter nested call <SID>goyo_enter()
+autocmd! User GoyoLeave nested call <SID>goyo_leave()
+
+map <Leader>z :Goyo<CR>
+xmap <Leader>z :Goyo<CR>
