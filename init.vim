@@ -116,7 +116,11 @@ let g:lsc_server_commands = {
             \ 'vue': 'vls',
             \ 'elixir': 'language_server.sh',
             \ 'c': 'ccls',
-            \ 'cpp': 'ccls'
+            \ 'cpp': 'ccls',
+            \ 'css': 'css-languageserver --stdio',
+            \ 'less': 'css-languageserver --stdio',
+            \ 'sass': 'css-languageserver --stdio',
+            \ 'yaml': 'yaml-language-server --stdio'
             \ }
 
 let g:lsc_auto_map = v:true " Use defaults
