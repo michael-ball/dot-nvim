@@ -138,6 +138,10 @@ endif
 let g:ale_fixers = {
             \ 'python': ['yapf'],
             \ 'rust': ['rustfmt'],
+            \ 'html': ['tidy'],
+            \ 'css': ['prettifier'],
+            \ 'less': ['prettifier'],
+            \ 'sass': ['prettifier']
 \}
 nmap <silent> <C-k> <Plug>(ale_previous_wrap)
 nmap <silent> <C-j> <Plug>(ale_next_wrap)
