@@ -44,6 +44,7 @@ syntax on
 set hlsearch
 set incsearch
 set backspace=indent,eol,start
+set visualbell
 filetype on
 filetype plugin on
 filetype plugin indent on
@@ -60,6 +61,15 @@ if has('autocmd')
     autocmd FileType * if &filetype == 'python' | match ErrorMsg '\%>79v.\+' | else | match ErrorMsg '' | endif
     " wrap Markdown, don't wrap anything else
     autocmd FileType * if &filetype == 'markdown' | set wrap | else | set nowrap | endif
+
+    " terminal setup
+    autocmd TermOpen * startinsert
+    autocmd TermOpen * setlocal scrollback=100000
+    autocmd TermOpen * setlocal modified
+    autocmd TermOpen * setlocal bufhidden=hide
+    autocmd TermOpen * setlocal statusline=%{b:term_title}
+    autocmd TermOpen * setlocal nonumber norelativenumber
+    autocmd TermOpen * match ErrorMsg ''
 endif
 
 set et
@@ -176,6 +186,7 @@ let g:indentLine_char = '▏'
 set list lcs=tab:\|\ 
 au FileType help set nolist
 au FileType help IndentLinesDisable
+au TermOpen * IndentLinesDisable
 
 " vim-go setup
 let g:go_highlight_build_constraints = 1
@@ -202,8 +213,6 @@ au FileType go nmap <silent> fr :GoReferrers<CR>
 autocmd CursorMovedI * if pumvisible() == 0|pclose|endif
 autocmd InsertLeave * if pumvisible() == 0|pclose|endif
 
-au TermOpen * setlocal nonumber norelativenumber
-au TermOpen * match ErrorMsg ''
 tnoremap <Esc> <C-\><C-n>
 
 " Vim markdown
@@ -231,5 +240,40 @@ endfunction
 autocmd! User GoyoEnter nested call <SID>goyo_enter()
 autocmd! User GoyoLeave nested call <SID>goyo_leave()
 
-map <Leader>z :Goyo<CR>
+map <Leader>z :Goyo<CR><CR>
 xmap <Leader>z :Goyo<CR>
+
+tnoremap <A-h> <C-\><C-N><C-w>h
+tnoremap <A-j> <C-\><C-N><C-w>j
+tnoremap <A-k> <C-\><C-N><C-w>k
+tnoremap <A-l> <C-\><C-N><C-w>l
+inoremap <A-h> <C-\><C-N><C-w>h
+inoremap <A-j> <C-\><C-N><C-w>j
+inoremap <A-k> <C-\><C-N><C-w>k
+inoremap <A-l> <C-\><C-N><C-w>l
+nnoremap <A-h> <C-w>h
+nnoremap <A-j> <C-w>j
+nnoremap <A-k> <C-w>k
+nnoremap <A-l> <C-w>l
+
+let g:term_buf = 0
+let g:term_win = 0
+
+function! Term_toggle(height)
+    if win_gotoid(g:term_win)
+        hide
+    else
+        botright new
+        exec "resize ". a:height
+        try
+            exec "buffer " . g:term_buf
+        catch
+            call termopen($SHELL, {"detach": 0})
+            keepalt file Terminal
+            let g:term_buf = bufnr("")
+        endtry
+        let g:term_win = win_getid()
+    endif
+endfunction
+
+nnoremap <Leader>t :call Term_toggle(15)<CR>
