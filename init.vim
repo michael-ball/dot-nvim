@@ -17,7 +17,7 @@ Plug 'ervandew/supertab'
 Plug 'godlygeek/tabular'
 Plug 'wellle/tmux-complete.vim'
 Plug 'mbbill/undotree'
-Plug 'vim-airline/vim-airline' | Plug 'vim-airline/vim-airline-themes'
+Plug 'vim-airline/vim-airline' | Plug 'vim-airline/vim-airline-themes' | Plug 'enricobacis/vim-airline-clock'
 Plug 'ryanoasis/vim-devicons'
 Plug 'elixir-editors/vim-elixir', { 'for': 'elixir' }
 Plug 'tpope/vim-fugitive'
@@ -103,6 +103,7 @@ call airline#parts#define_raw('linenr', '%l')
 call airline#parts#define_accent('linenr', 'bold')
 let g:airline_section_z = airline#section#create(['%3p%%  ', g:airline_symbols.linenr .' ', 'linenr', ':%c '])
 let g:airline#extensions#tmuxline#enabled = 0
+let g:airline#extensions#clock#format = '%Y-%m-%d  %H:%M'
 
 " Gitgutter configuration
 
