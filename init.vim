@@ -180,6 +180,16 @@ map <Leader>vz :call VimuxZoomRunner()<CR>
 nnoremap <silent> <F3> :Denite buffer<CR>
 nnoremap <silent> <F4> :Denite file_rec<CR>
 
+call denite#custom#var('file/rec', 'command',
+                    \ ['rg', '--files', '--glob', '!.git'])
+call denite#custom#var('grep', 'command', ['rg'])
+call denite#custom#var('grep', 'default_opts',
+                    \ ['-i', '--vimgrep', '--no-heading', '-uuu'])
+call denite#custom#var('grep', 'recursive_opts', [])
+call denite#custom#var('grep', 'pattern_opt', ['--regexp'])
+call denite#custom#var('grep', 'separator', ['--'])
+call denite#custom#var('grep', 'final_opts', [])
+
 " Undotree configuration
 nnoremap <F5> :UndotreeToggle<cr>
 
