@@ -83,11 +83,11 @@ let g:deoplete#enable_at_startup = 1
 " Look/feel configuration 
 
 if !has('gui-running')
-    "let base16colorspace=256
-    set termguicolors
+    let base16colorspace=256
+    "set termguicolors
 endif
 set background=dark
-colors base16-synth-midnight-dark
+colors base16-horizon-dark
 
 " Airline configuration
 let g:airline_theme = 'base16'
