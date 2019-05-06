@@ -103,6 +103,7 @@ call airline#parts#define_raw('linenr', '%l')
 call airline#parts#define_accent('linenr', 'bold')
 let g:airline_section_z = airline#section#create(['%3p%%  ', g:airline_symbols.linenr .' ', 'linenr', ':%c '])
 let g:airline#extensions#tmuxline#enabled = 0
+let g:airline#extensions#clock#enabled = 0
 let g:airline#extensions#clock#format = '%Y-%m-%d  %H:%M'
 
 " Gitgutter configuration
