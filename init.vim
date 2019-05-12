@@ -180,6 +180,7 @@ map <Leader>vz :call VimuxZoomRunner()<CR>
 
 nnoremap <silent> <F3> :Denite buffer<CR>
 nnoremap <silent> <F4> :Denite file/rec<CR>
+nnoremap <silent> <F6> :Denite grep<CR>
 
 call denite#custom#var('file/rec', 'command',
                     \ ['rg', '--files', '--glob', '!.git'])
