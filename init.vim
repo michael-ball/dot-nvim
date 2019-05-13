@@ -77,6 +77,7 @@ set nowrap
 set sw=4
 set smarttab
 set encoding=utf-8
+set nofoldenable
 
 let g:deoplete#enable_at_startup = 1
 
