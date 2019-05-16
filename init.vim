@@ -199,24 +199,7 @@ au FileType help set nolist
 au FileType help IndentLinesDisable
 au TermOpen * IndentLinesDisable
 
-" vim-go setup
-let g:go_highlight_build_constraints = 1
-let g:go_highlight_extra_types = 1
-let g:go_highlight_fields = 1
-let g:go_highlight_functions = 1
-let g:go_highlight_methods = 1
-let g:go_highlight_operators = 1
-let g:go_highlight_structs = 1
-let g:go_highlight_types = 1
-let g:go_metalinter_autosave = 1
-let g:go_fmt_command = "goimports"
-let g:go_auto_type_info = 1
-
 autocmd FileType qf nmap <buffer> <cr> <cr>:lcl<cr><Paste>
-au FileType go nmap <silent> po :Denite decls<CR>
-au FileType go nmap <silent> gd <Plug>(go-def)
-au FileType go nmap <silent> <F2> :GoRename<CR>
-au FileType go nmap <silent> fr :GoReferrers<CR>
 
 " If you prefer the Omni-Completion tip window to close when a selection is
 " made, these lines close it on movement in insert mode or when leaving
