@@ -5,8 +5,6 @@ Plug 'chriskempson/base16-vim'
 Plug 'luisjure/csound-vim', { 'for': 'csound' }
 Plug 'Shougo/denite.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-Plug 'zchee/deoplete-go', { 'for': 'go' }
-Plug 'godoctor/godoctor.vim', { 'for': 'go' }
 Plug 'junegunn/goyo.vim' | Plug 'junegunn/limelight.vim'
 Plug 'Yggdroot/indentLine'
 Plug 'Shougo/neco-syntax'
@@ -22,8 +20,6 @@ Plug 'ryanoasis/vim-devicons'
 Plug 'elixir-editors/vim-elixir', { 'for': 'elixir' }
 Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
-Plug 'fatih/vim-go', { 'for': 'go' }
-Plug 'jodosha/vim-godebug', { 'for': 'go' }
 Plug 'Glench/Vim-Jinja2-Syntax'
 Plug 'natebosch/vim-lsc'
 Plug 'plasticboy/vim-markdown'
@@ -133,7 +129,8 @@ let g:lsc_server_commands = {
             \ 'css': 'css-languageserver --stdio',
             \ 'less': 'css-languageserver --stdio',
             \ 'sass': 'css-languageserver --stdio',
-            \ 'yaml': 'yaml-language-server --stdio'
+            \ 'yaml': 'yaml-language-server --stdio',
+            \ 'go': 'gopls serve'
             \ }
 
 let g:lsc_auto_map = v:true " Use defaults
