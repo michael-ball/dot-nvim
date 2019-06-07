@@ -54,7 +54,7 @@ if has('autocmd')
     autocmd FileType javascript set tabstop=2 shiftwidth=2 softtabstop=2 et
 
     " only show ruler for python
-    autocmd FileType * if &filetype == 'python' | match ErrorMsg '\%>79v.\+' | else | match ErrorMsg '' | endif
+    autocmd FileType * if &filetype == 'python' | match ErrorMsg '\%>159v.\+' | else | match ErrorMsg '' | endif
     " wrap Markdown, don't wrap anything else
     autocmd FileType * if &filetype == 'markdown' | set wrap | else | set nowrap | endif
 
