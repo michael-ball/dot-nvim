@@ -219,10 +219,12 @@ call denite#custom#var('grep', 'final_opts', [])
 nnoremap <F5> :UndotreeToggle<cr>
 
 let g:indentLine_char = '▏'
+let g:indentLine_defaultGroup = 'Whitespace'
 set list lcs=tab:\|\ 
 au FileType help set nolist
 au FileType help IndentLinesDisable
 au TermOpen * IndentLinesDisable
+au TermOpen * set nolist
 
 autocmd FileType qf nmap <buffer> <cr> <cr>:lcl<cr><Paste>
 
