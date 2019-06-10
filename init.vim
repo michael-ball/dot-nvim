@@ -120,7 +120,22 @@ noremap <F8> :NERDTreeToggle<CR>
 let g:lsc_server_commands = {
             \ 'rust': 'rls',
             \ 'javascript': 'javascript-typescript-stdio',
-            \ 'python': 'pyenv exec pyls --check-parent-process',
+            \ 'python': {
+            \   'name': 'python-language-server',
+            \   'command': 'dotnet /usr/lib/microsoft-python-language-server/Microsoft.Python.LanguageServer.dll',
+            \   'message_hooks': {
+            \           'initialize': {
+            \                   'initializationOptions': {
+            \                           'interpreter': {
+            \                                   'properties': {
+            \                                           'InterpreterPath': '~/.pyenv/shims/python',
+            \                                           'UseDefaultDatabase': 'true'
+            \                                   }
+            \                           }
+            \                   }
+            \           }
+            \   }
+            \ },
             \ 'vue': 'vls',
             \ 'elixir': 'language_server.sh',
             \ 'c': 'ccls',
