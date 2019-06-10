@@ -3,7 +3,7 @@ call plug#begin('~/.local/share/nvim/plugged')
 Plug 'w0rp/ale'
 Plug 'chriskempson/base16-vim'
 Plug 'luisjure/csound-vim', { 'for': 'csound' }
-Plug 'Shougo/denite.nvim', { 'do': ':UpdateRemotePlugins' }
+Plug 'Shougo/denite.nvim', { 'do': ':UpdateRemotePlugins' } | Plug 'iyuuya/denite-ale'
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'junegunn/goyo.vim' | Plug 'junegunn/limelight.vim'
 Plug 'Yggdroot/indentLine'
@@ -151,7 +151,8 @@ let g:lsc_server_commands = {
 let g:lsc_auto_map = v:true " Use defaults
 noremap <F2> :LSClientRename<CR>
 
-" Ale configuration 
+" Ale configuration
+let g:ale_disable_lsp = 1
 let g:ale_completion_enabled = 0  " disable completion
 let g:ale_set_highlights = 0
 let g:airline#extensions#ale#enabled = 1
