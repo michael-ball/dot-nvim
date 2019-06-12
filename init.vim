@@ -122,7 +122,7 @@ let g:lsc_server_commands = {
             \ 'javascript': 'javascript-typescript-stdio',
             \ 'python': {
             \   'name': 'python-language-server',
-            \   'command': 'dotnet /usr/lib/microsoft-python-language-server/Microsoft.Python.LanguageServer.dll',
+            \   'command': 'mspyls',
             \   'message_hooks': {
             \           'initialize': {
             \                   'initializationOptions': {
