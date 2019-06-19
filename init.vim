@@ -236,7 +236,7 @@ nnoremap <F5> :UndotreeToggle<cr>
 
 let g:indentLine_char = '▏'
 let g:indentLine_defaultGroup = 'Whitespace'
-set list lcs=tab:\|\ 
+set list lcs=tab:\▏\ 
 au FileType help set nolist
 au FileType help IndentLinesDisable
 au TermOpen * IndentLinesDisable
