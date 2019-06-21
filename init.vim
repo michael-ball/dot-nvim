@@ -149,6 +149,7 @@ let g:lsc_server_commands = {
             \ }
 
 let g:lsc_auto_map = v:true " Use defaults
+let g:lsc_enable_diagnostics = v:false
 noremap <F2> :LSClientRename<CR>
 
 " Ale configuration
