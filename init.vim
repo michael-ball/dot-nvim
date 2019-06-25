@@ -83,7 +83,7 @@ if !has('gui-running')
     set termguicolors
 endif
 set background=dark
-colors base16-horizon-terminal-dark
+colors base16-horizon-dark
 
 " Airline configuration
 let g:airline_theme = 'base16'
