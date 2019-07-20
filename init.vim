@@ -119,7 +119,8 @@ noremap <F8> :NERDTreeToggle<CR>
 " vim-lsc configuration
 let g:lsc_server_commands = {
             \ 'rust': 'rls',
-            \ 'javascript': 'javascript-typescript-stdio',
+            \ 'javascript': 'typescript-language-server --stdio',
+            \ 'typescript': 'typescript-language-server --stdio',
             \ 'python': {
             \   'name': 'python-language-server',
             \   'command': 'mspyls',
@@ -138,8 +139,8 @@ let g:lsc_server_commands = {
             \ },
             \ 'vue': 'vls',
             \ 'elixir': 'language_server.sh',
-            \ 'c': 'ccls',
-            \ 'cpp': 'ccls',
+            \ 'c': 'clangd',
+            \ 'cpp': 'clangd',
             \ 'css': 'css-languageserver --stdio',
             \ 'less': 'css-languageserver --stdio',
             \ 'sass': 'css-languageserver --stdio',
@@ -166,9 +167,11 @@ let g:ale_fixers = {
             \ 'python': ['yapf'],
             \ 'rust': ['rustfmt'],
             \ 'html': ['tidy'],
-            \ 'css': ['prettifier'],
-            \ 'less': ['prettifier'],
-            \ 'sass': ['prettifier']
+            \ 'css': ['prettier'],
+            \ 'less': ['prettier'],
+            \ 'sass': ['prettier'],
+            \ 'javascript': ['eslint'],
+            \ 'typescript': ['eslint']
 \}
 nmap <silent> <C-k> <Plug>(ale_previous_wrap)
 nmap <silent> <C-j> <Plug>(ale_next_wrap)
