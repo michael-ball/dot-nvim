@@ -3,7 +3,6 @@ call plug#begin('~/.local/share/nvim/plugged')
 Plug 'w0rp/ale'
 Plug 'chriskempson/base16-vim'
 Plug 'luisjure/csound-vim', { 'for': 'csound' }
-Plug 'Shougo/denite.nvim', { 'do': ':UpdateRemotePlugins' } | Plug 'iyuuya/denite-ale'
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'junegunn/goyo.vim' | Plug 'junegunn/limelight.vim'
 Plug 'Yggdroot/indentLine'
@@ -199,47 +198,6 @@ map <Leader>vq :VimuxCloseRunner<CR>
 map <Leader>vx :VimuxInterruptRunner<CR>
 " Zoom the runner pane (use <bind-key> z to restore runner pane)
 map <Leader>vz :call VimuxZoomRunner()<CR>
-
-" Denite settings
-
-nnoremap <silent> <F3> :Denite buffer<CR>
-nnoremap <silent> <F4> :Denite file/rec<CR>
-nnoremap <silent> <F6> :Denite grep<CR>
-
-autocmd FileType denite call s:denite_my_settings()
-
-function! s:denite_my_settings() abort
-    nnoremap <silent><buffer><expr> <CR>
-                \ denite#do_map('do_action')
-    nnoremap <silent><buffer><expr> d
-                \ denite#do_map('do_action', 'delete')
-    nnoremap <silent><buffer><expr> p
-                \ denite#do_map('do_action', 'preview')
-    nnoremap <silent><buffer><expr> q
-                \ denite#do_map('quit')
-    nnoremap <silent><buffer><expr> i
-                \ denite#do_map('open_filter_buffer')
-    nnoremap <silent><buffer><expr> <Space>
-                \ denite#do_map('toggle_select').'j'
-endfunction
-
-
-
-call denite#custom#alias('source', 'file/rec/git', 'file/rec')
-call denite#custom#var('file/rec/git', 'command',
-            \ ['git', 'ls-files', '-co', '--exclude-standard'])
-nnoremap <silent> <C-p> :<C-u>Denite
-            \ `finddir('.git', ';') != '' ? 'file/rec/git' : 'file/rec'`<CR>
-
-call denite#custom#var('file/rec', 'command',
-                    \ ['rg', '--files', '--glob', '!.git'])
-call denite#custom#var('grep', 'command', ['rg'])
-call denite#custom#var('grep', 'default_opts',
-                    \ ['-i', '--vimgrep', '--no-heading', '-uuu'])
-call denite#custom#var('grep', 'recursive_opts', [])
-call denite#custom#var('grep', 'pattern_opt', ['--regexp'])
-call denite#custom#var('grep', 'separator', ['--'])
-call denite#custom#var('grep', 'final_opts', [])
 
 " Undotree configuration
 nnoremap <F5> :UndotreeToggle<cr>
