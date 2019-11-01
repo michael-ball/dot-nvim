@@ -14,7 +14,7 @@ Plug 'ervandew/supertab'
 Plug 'godlygeek/tabular'
 Plug 'wellle/tmux-complete.vim'
 Plug 'mbbill/undotree'
-Plug 'vim-airline/vim-airline' | Plug 'vim-airline/vim-airline-themes' | Plug 'enricobacis/vim-airline-clock'
+Plug 'vim-airline/vim-airline' | Plug 'vim-airline/vim-airline-themes'
 Plug 'ryanoasis/vim-devicons'
 Plug 'elixir-editors/vim-elixir', { 'for': 'elixir' }
 Plug 'tpope/vim-fugitive'
