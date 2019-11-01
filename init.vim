@@ -115,6 +115,9 @@ let g:gitgutter_sign_removed = '█'
 let g:gitgutter_sign_modified_removed = '█'
 let g:gitgutter_diff_args = '-w --ignore-blank-lines'
 
+" fugitive configuration
+nnoremap <leader>g :<C-u>Gstatus<cr>
+
 " NERDTree configuration
 let g:NERDTreeDirArrowExpandable = '▸'
 let g:NERDTreeDirArrowCollapsible = '▾'
