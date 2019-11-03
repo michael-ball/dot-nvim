@@ -17,7 +17,6 @@ Plug 'neoclide/coc-tsserver', { 'do': 'yarn install --frozen-lockfile' }
 Plug 'neoclide/coc-yaml', { 'do': 'yarn install --frozen-lockfile' }
 
 Plug 'luisjure/csound-vim', { 'for': 'csound' }
-Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'junegunn/goyo.vim' | Plug 'junegunn/limelight.vim'
 Plug 'Yggdroot/indentLine'
 Plug 'Shougo/neco-syntax'
@@ -87,8 +86,6 @@ set sw=4
 set smarttab
 set encoding=utf-8
 set nofoldenable
-
-let g:deoplete#enable_at_startup = 1
 
 " Look/feel configuration 
 
