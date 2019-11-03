@@ -19,7 +19,6 @@ Plug 'neoclide/coc-yaml', { 'do': 'yarn install --frozen-lockfile' }
 Plug 'luisjure/csound-vim', { 'for': 'csound' }
 Plug 'junegunn/goyo.vim' | Plug 'junegunn/limelight.vim'
 Plug 'Yggdroot/indentLine'
-Plug 'Shougo/neco-syntax'
 Plug 'scrooloose/nerdcommenter'
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
 Plug 'scrooloose/nerdtree-git-plugin', { 'on': 'NERDTreeToggle' }
