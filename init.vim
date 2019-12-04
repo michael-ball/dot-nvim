@@ -104,9 +104,12 @@ let g:airline_left_sep = ' '
 let g:airline_left_alt_sep = '|'
 let g:airline_right_sep = ' '
 let g:airline_right_alt_sep = '|'
-let g:airline_symbols.paste = 'PASTE - '
-let g:airline_symbols.linenr = ''
-let g:airline_symbols.columnr = ''
+
+if !exists('g:airline_symbols')
+  let g:airline_symbols = {}
+endif
+
+let g:airline_symbols.paste = '📋 '
 let g:airline#extensions#whitespace#enabled = 0
 call airline#parts#define_raw('linenr', '%l')
 call airline#parts#define_accent('linenr', 'bold')
@@ -367,3 +370,6 @@ nnoremap <silent> <space>j  :<C-u>CocNext<CR>
 nnoremap <silent> <space>k  :<C-u>CocPrev<CR>
 " Resume latest coc list
 nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
+
+" I like comments in italics
+highlight Comment cterm=italic gui=italic
