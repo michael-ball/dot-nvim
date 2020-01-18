@@ -15,6 +15,7 @@ Plug 'neoclide/coc-rls', { 'do': 'yarn install --frozen-lockfile' }
 Plug 'josa42/coc-sh', { 'do': 'yarn install --frozen-lockfile' }
 Plug 'neoclide/coc-tsserver', { 'do': 'yarn install --frozen-lockfile' }
 Plug 'neoclide/coc-yaml', { 'do': 'yarn install --frozen-lockfile' }
+" END coc plugins
 
 Plug 'luisjure/csound-vim', { 'for': 'csound' }
 Plug 'junegunn/goyo.vim' | Plug 'junegunn/limelight.vim'
@@ -32,7 +33,20 @@ Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
 Plug 'Glench/Vim-Jinja2-Syntax'
 Plug 'plasticboy/vim-markdown'
-Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }}
+
+" vim-markdown-composer
+function! BuildComposer(info)
+  if a:info.status != 'unchanged' || a:info.force
+    if has('nvim')
+      !cargo build --release --locked
+    else
+      !cargo build --release --locked --no-default-features --features json-rpc
+    endif
+  endif
+endfunction
+Plug 'euclio/vim-markdown-composer', { 'do': function('BuildComposer') }
+" END vim-markdown-composer
+
 Plug 'junegunn/vim-plug'
 Plug 'tmux-plugins/vim-tmux'
 Plug 'tmux-plugins/vim-tmux-focus-events'
@@ -65,9 +79,9 @@ if has('autocmd')
     autocmd FileType javascript set tabstop=2 shiftwidth=2 softtabstop=2 et
 
     " only show ruler for python
-    autocmd FileType * if &filetype == 'python' | match ErrorMsg '\%>159v.\+' | else | match ErrorMsg '' | endif
+    autocmd BufEnter * if &filetype == 'python' | match ErrorMsg '\%>159v.\+' | else | match ErrorMsg '' | endif
     " wrap Markdown, don't wrap anything else
-    autocmd FileType * if &filetype == 'markdown' | set wrap | else | set nowrap | endif
+    autocmd BufEnter * if (&filetype == 'markdown' || &filetype == 'rst' || &filetype == 'text') | set wrap | else | set nowrap | endif
 
     " terminal setup
     autocmd TermOpen * startinsert
@@ -85,6 +99,9 @@ set sw=4
 set smarttab
 set encoding=utf-8
 set nofoldenable
+set linebreak
+set showbreak=↪\ 
+set breakindent
 
 " Look/feel configuration 
 
