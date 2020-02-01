@@ -23,6 +23,7 @@ Plug 'Yggdroot/indentLine'
 Plug 'scrooloose/nerdcommenter'
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
 Plug 'scrooloose/nerdtree-git-plugin', { 'on': 'NERDTreeToggle' }
+Plug 'supercollider/scvim'
 Plug 'godlygeek/tabular'
 Plug 'wellle/tmux-complete.vim'
 Plug 'mbbill/undotree'
@@ -392,3 +393,6 @@ nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
 
 " I like comments in italics
 highlight Comment cterm=italic gui=italic
+
+" SCVim
+let g:scFlash = 1
