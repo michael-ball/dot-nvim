@@ -73,15 +73,16 @@ set clipboard+=unnamedplus
 
 if has('autocmd')
     " set different indent rules
-    autocmd FileType make set tabstop=8 shiftwidth=8 softtabstop=0 noexpandtab
-    autocmd FileType go set tabstop=4 shiftwidth=4 softtabstop=0 noexpandtab
-    autocmd FileType html set tabstop=2 shiftwidth=2 softtabstop=2 et
-    autocmd FileType javascript set tabstop=2 shiftwidth=2 softtabstop=2 et
+    autocmd FileType make setlocal tabstop=8 shiftwidth=8 softtabstop=0 noexpandtab
+    autocmd FileType go setlocal tabstop=4 shiftwidth=4 softtabstop=0 noexpandtab
+    autocmd FileType javascript setlocal tabstop=2 shiftwidth=2 softtabstop=2 expandtab
 
     " only show ruler for python
     autocmd BufEnter * if &filetype == 'python' | match ErrorMsg '\%>159v.\+' | else | match ErrorMsg '' | endif
-    " wrap Markdown, don't wrap anything else
-    autocmd BufEnter * if (&filetype == 'markdown' || &filetype == 'rst' || &filetype == 'text') | set wrap | else | set nowrap | endif
+    " wrap markdown, restructuredtext and regular text but don't wrap anything else
+    autocmd FileType markdown setlocal wrap
+    autocmd FileType rst setlocal wrap
+    autocmd FileType text setlocal wrap
 
     " terminal setup
     autocmd TermOpen * startinsert
@@ -93,9 +94,10 @@ if has('autocmd')
     autocmd TermOpen * match ErrorMsg ''
 endif
 
-set et
+set expandtab
 set nowrap
-set sw=4
+set shiftwidth=4
+set softtabstop=4
 set smarttab
 set encoding=utf-8
 set nofoldenable
