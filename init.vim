@@ -116,6 +116,14 @@ colors base16-horizon-dark
 
 " Airline configuration
 
+function! CurrentSymbol()
+    if exists("b:coc_current_function") && get(b:, 'coc_current_function', '') =~ '.\+'
+        return ' > ' . get(b:, 'coc_current_function', '')
+    else
+        return ' '
+    endif
+endfunction
+
 let g:airline_skip_empty_sections = 1
 let g:airline_theme = 'base16'
 let g:airline_powerline_fonts = 1
@@ -130,11 +138,15 @@ if !exists('g:airline_symbols')
 endif
 
 let g:airline_symbols.paste = '📋 '
+let airline#extensions#coc#error_symbol = '✕ :'
+let airline#extensions#coc#warning_symbol = '⚠ :'
 let g:airline#extensions#whitespace#enabled = 0
 call airline#parts#define_raw('linenr', '%l')
 call airline#parts#define_accent('linenr', 'bold')
 call airline#parts#define_raw('colnmr', '%c')
 call airline#parts#define_accent('colnmr', 'italic')
+call airline#parts#define_function('currfunc', 'CurrentSymbol')
+let g:airline_section_c = airline#section#create(['file', 'currfunc'])
 let g:airline_section_z = airline#section#create(['%3p%%  ', 'linenr', ':', 'colnmr'])
 let g:airline#extensions#tmuxline#enabled = 0
 let g:airline#extensions#coc#enabled = 1
@@ -366,9 +378,6 @@ command! -nargs=? Fold :call     CocAction('fold', <f-args>)
 
 " use `:OR` for organize import of current buffer
 command! -nargs=0 OR   :call     CocAction('runCommand', 'editor.action.organizeImport')
-
-" Add status line support, for integration with other plugin, checkout `:h coc-status`
-set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
 
 " Using CocList
 " Show all diagnostics
