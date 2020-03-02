@@ -39,9 +39,9 @@ Plug 'plasticboy/vim-markdown'
 function! BuildComposer(info)
   if a:info.status != 'unchanged' || a:info.force
     if has('nvim')
-      !cargo build --release --locked
+      !cargo +stable build --release --locked
     else
-      !cargo build --release --locked --no-default-features --features json-rpc
+      !cargo +stable build --release --locked --no-default-features --features json-rpc
     endif
   endif
 endfunction
@@ -146,7 +146,7 @@ call airline#parts#define_accent('linenr', 'bold')
 call airline#parts#define_raw('colnmr', '%c')
 call airline#parts#define_accent('colnmr', 'italic')
 call airline#parts#define_function('currfunc', 'CurrentSymbol')
-let g:airline_section_c = airline#section#create(['file', 'currfunc'])
+let g:airline_section_c = airline#section#create(['%<', 'file', ' ', 'readonly', 'currfunc', 'coc_status'])
 let g:airline_section_z = airline#section#create(['%3p%%  ', 'linenr', ':', 'colnmr'])
 let g:airline#extensions#tmuxline#enabled = 0
 let g:airline#extensions#coc#enabled = 1
