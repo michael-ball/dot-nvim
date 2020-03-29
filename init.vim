@@ -2,21 +2,6 @@ call plug#begin('~/.local/share/nvim/plugged')
 
 Plug 'chriskempson/base16-vim'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-
-" coc plugins
-Plug 'neoclide/coc-css', { 'do': 'yarn install --frozen-lockfile' }
-Plug 'amiralies/coc-elixir', { 'do': 'yarn install --frozen-lockfile' }
-Plug 'josa42/coc-go', { 'do': 'yarn install --frozen-lockfile' }
-Plug 'neoclide/coc-html', { 'do': 'yarn install --frozen-lockfile' }
-Plug 'neoclide/coc-json', { 'do': 'yarn install --frozen-lockfile' }
-Plug 'neoclide/coc-lists', { 'do': 'yarn install --frozen-lockfile' }
-Plug 'neoclide/coc-python', { 'do': 'yarn install --frozen-lockfile' }
-Plug 'neoclide/coc-rls', { 'do': 'yarn install --frozen-lockfile' }
-Plug 'josa42/coc-sh', { 'do': 'yarn install --frozen-lockfile' }
-Plug 'neoclide/coc-tsserver', { 'do': 'yarn install --frozen-lockfile' }
-Plug 'neoclide/coc-yaml', { 'do': 'yarn install --frozen-lockfile' }
-" END coc plugins
-
 Plug 'luisjure/csound-vim', { 'for': 'csound' }
 Plug 'junegunn/goyo.vim' | Plug 'junegunn/limelight.vim'
 Plug 'Yggdroot/indentLine'
@@ -271,6 +256,20 @@ endfunction
 nnoremap <Leader>t :call Term_toggle(15)<CR>
 
 " coc.nvim settings
+" Plugins
+let g:coc_global_extensions = [
+      \'coc-css',
+      \'coc-elixir',
+      \'coc-go',
+      \'coc-html',
+      \'coc-json',
+      \'coc-lists',
+      \'coc-python',
+      \'coc-rls',
+      \'coc-sh',
+      \'coc-tsserver',
+      \'coc-yaml'
+      \]
 " if hidden is not set, TextEdit might fail.
 set hidden
 
