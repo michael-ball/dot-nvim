@@ -18,6 +18,7 @@ Plug 'elixir-editors/vim-elixir', { 'for': 'elixir' }
 Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
 Plug 'Glench/Vim-Jinja2-Syntax'
+Plug 'jackguo380/vim-lsp-cxx-highlight'
 Plug 'plasticboy/vim-markdown'
 
 " vim-markdown-composer
@@ -258,6 +259,7 @@ nnoremap <Leader>t :call Term_toggle(15)<CR>
 " coc.nvim settings
 " Plugins
 let g:coc_global_extensions = [
+      \'coc-clangd',
       \'coc-css',
       \'coc-elixir',
       \'coc-go',
