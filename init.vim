@@ -20,20 +20,6 @@ Plug 'airblade/vim-gitgutter'
 Plug 'Glench/Vim-Jinja2-Syntax'
 Plug 'jackguo380/vim-lsp-cxx-highlight'
 Plug 'plasticboy/vim-markdown'
-
-" vim-markdown-composer
-function! BuildComposer(info)
-  if a:info.status != 'unchanged' || a:info.force
-    if has('nvim')
-      !cargo +stable build --release --locked
-    else
-      !cargo +stable build --release --locked --no-default-features --features json-rpc
-    endif
-  endif
-endfunction
-Plug 'euclio/vim-markdown-composer', { 'do': function('BuildComposer') }
-" END vim-markdown-composer
-
 Plug 'junegunn/vim-plug'
 Plug 'tmux-plugins/vim-tmux'
 Plug 'tmux-plugins/vim-tmux-focus-events'
